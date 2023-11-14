@@ -25,7 +25,7 @@
     </PropertyGroup>
     
     <Target Name="GenerateRelease" AfterTargets="AfterBuild" Condition="$(Configuration) == Release">
-        <Copy SourceFiles="$(SquirrelToolsExe)" DestinationFiles="$(OutDir)..\..\Update.exe" Condition="!Exists('$(OutDir)..\..\Update.exe')"/>
+        <Copy SourceFiles="$(SquirrelToolsExe)" DestinationFiles="$(OutDir)..\Update.exe" Condition="!Exists('$(OutDir)..\Update.exe')"/>
         
         <GetAssemblyIdentity AssemblyFiles="$(TargetPath)">
             <Output TaskParameter="Assemblies" ItemName="assemblyInfo" />
