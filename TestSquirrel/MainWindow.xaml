@@ -13,7 +13,7 @@
         </Style>
     </Window.Resources>
     
-    <Grid Background="Aquamarine">
+    <Grid Background="Violet">
         <Grid.RowDefinitions>
             <RowDefinition Height="30px"/>
             <RowDefinition Height="30px"/>
