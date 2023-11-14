@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Windows;
 using Squirrel;
 
@@ -22,7 +23,14 @@ public partial class MainWindow : Window
 
     private async void Update_OnClick(object sender, RoutedEventArgs e)
     {
-        await _manager.UpdateApp();
+        try
+        {
+            await _manager.UpdateApp();
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.Message);
+        }
 
         MessageBox.Show("Updated!");
     }
