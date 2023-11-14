@@ -10,10 +10,12 @@
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Height" Value="30px"/>
+            <Setter Property="Background" Value="Blue"/>
+            <Setter Property="Foreground" Value="Azure"/>
         </Style>
     </Window.Resources>
     
-    <Grid Background="Violet">
+    <Grid Background="CornflowerBlue">
         <Grid.RowDefinitions>
             <RowDefinition Height="30px"/>
             <RowDefinition Height="30px"/>
