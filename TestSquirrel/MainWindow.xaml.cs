@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+﻿using System.Linq;
 using System.Windows;
 using Squirrel;
 
@@ -6,26 +6,30 @@ namespace TestSquirrel;
 
 public partial class MainWindow : Window
 {
+    private UpdateManager? _manager;
+    
     public MainWindow()
     {
         InitializeComponent();
-        var assembly = Assembly.GetExecutingAssembly();
-        var fileInfo = System.Diagnostics.FileVersionInfo.GetVersionInfo(assembly.Location);
-        VersionTb.Text = fileInfo.FileVersion;
     }
 
-    private void Check_OnClick(object sender, RoutedEventArgs e)
+    private async void Check_OnClick(object sender, RoutedEventArgs e)
     {
-        throw new System.NotImplementedException();
+        await _manager.UpdateApp();
+
+        MessageBox.Show("Updated!");
     }
 
-    private void Update_OnClick(object sender, RoutedEventArgs e)
+    private async void Update_OnClick(object sender, RoutedEventArgs e)
     {
-        throw new System.NotImplementedException();
+        var updateInfo = await _manager!.CheckForUpdate();
+
+        UpdateBtn.IsEnabled = updateInfo.ReleasesToApply.Any();
     }
 
     private async void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
     {
-        // var manager = await UpdateManager.GitHubUpdateManager();
+        _manager = await UpdateManager.GitHubUpdateManager(@"https://github.com/nicolas-ratushniak/TestSquirrel");
+        VersionTb.Text = _manager.CurrentlyInstalledVersion().ToString();
     }
 }
