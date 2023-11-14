@@ -10,8 +10,8 @@
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Height" Value="30px"/>
-            <Setter Property="Background" Value="Blue"/>
-            <Setter Property="Foreground" Value="Azure"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="CornflowerBlue"/>
         </Style>
     </Window.Resources>
     
