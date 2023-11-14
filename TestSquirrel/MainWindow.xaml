@@ -10,8 +10,8 @@
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Height" Value="30px"/>
-            <Setter Property="Background" Value="Blue"/>
-            <Setter Property="Foreground" Value="Azure"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Green"/>
         </Style>
     </Window.Resources>
     
@@ -23,6 +23,5 @@
         </Grid.RowDefinitions>
         <TextBlock x:Name="VersionTb"></TextBlock>
         <Button x:Name="UpdateBtn" Grid.Row="1" Click="Update_OnClick">Update</Button>
-        <Button Grid.Row="2" Click="Check_OnClick">Check</Button>
     </Grid>
 </Window>

@@ -6,30 +6,29 @@ namespace TestSquirrel;
 
 public partial class MainWindow : Window
 {
-    private UpdateManager? _manager;
-    
+    private const string RepoUrl = "https://github.com/nicolas-ratushniak/TestSquirrel";
+
     public MainWindow()
     {
         InitializeComponent();
     }
 
-    private async void Check_OnClick(object sender, RoutedEventArgs e)
-    {
-        var updateInfo = await _manager!.CheckForUpdate();
-
-        UpdateBtn.IsEnabled = updateInfo.ReleasesToApply.Any();
-    }
-
     private async void Update_OnClick(object sender, RoutedEventArgs e)
     {
-        await _manager.UpdateApp();
+        using var manager = await UpdateManager
+            .GitHubUpdateManager(RepoUrl);
 
-        MessageBox.Show("Updated!");
+        manager.UpdateApp();
     }
 
     private async void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
     {
-        _manager = await UpdateManager.GitHubUpdateManager("https://github.com/nicolas-ratushniak/TestSquirrel");
-        VersionTb.Text = _manager.CurrentlyInstalledVersion().ToString();
+        using var manager = await UpdateManager
+            .GitHubUpdateManager(RepoUrl);
+        
+        VersionTb.Text = manager.CurrentlyInstalledVersion().ToString();
+        
+        var updateInfo = await manager.CheckForUpdate();
+        UpdateBtn.IsEnabled = updateInfo.ReleasesToApply.Any();
     }
 }
