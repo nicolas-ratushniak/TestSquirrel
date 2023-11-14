@@ -23,6 +23,5 @@
         </Grid.RowDefinitions>
         <TextBlock x:Name="VersionTb"></TextBlock>
         <Button x:Name="UpdateBtn" Grid.Row="1" Click="Update_OnClick">Update</Button>
-        <Button Grid.Row="2" Click="Check_OnClick">Check</Button>
     </Grid>
 </Window>
